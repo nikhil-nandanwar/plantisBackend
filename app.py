@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array
 import numpy as np
+from flask_cors import CORS
 import tempfile
 import os
 import cv2
@@ -11,7 +12,7 @@ from preprocess import remove_background_to_black
 
 # Initialize Flask app
 app = Flask(__name__)
-
+CORS(app)
 # Load trained model
 MODEL_PATH = "plant_disease_resnet50_model.h5"
 model = load_model(MODEL_PATH)
@@ -91,7 +92,7 @@ def predict():
         confidence = float(np.max(preds[0]))
 
         # Cleanup temp file
-        os.remove(temp_input.name)
+        # os.remove(temp_input.name)
 
         # Return result
         return jsonify({
