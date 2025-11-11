@@ -114,4 +114,4 @@ def home():
 
 if __name__ == "__main__":
     debug = os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
-    app.run(host='0.0.0.0', port=PORT, debug=debug)
+    app.run(host='0.0.0.0', debug=debug)
