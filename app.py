@@ -14,7 +14,7 @@ from preprocess import remove_background_to_black
 app = Flask(__name__)
 CORS(app)
 # Load trained model
-MODEL_PATH = "plant_disease_resnet50_model.h5"
+MODEL_PATH = "best_custom_cnn_model.h5"
 model = load_model(MODEL_PATH)
 
 # Define image size (depends on your ResNet50 input size, usually 224x224)
