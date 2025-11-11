@@ -10,6 +10,8 @@ import cv2
 # Import preprocessing function
 from preprocess import remove_background_to_black
 
+PORT = int(os.getenv('PORT', 5000))
+
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app)
@@ -111,4 +113,5 @@ def home():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    debug = os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
+    app.run(host='0.0.0.0', port=PORT, debug=debug)
